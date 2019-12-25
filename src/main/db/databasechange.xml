@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+	<changeSet author="sang" id="103">
+		    <tagDatabase tag="tag0"/>
+         </changeSet>
+
+	<include file="./src/main/db/createtable.sql"/>
+
+       <!--	<include file="./src/main/db/trigger.xml"/> -->
+
+	<changeSet id="20" author="sang">
+		<sql>
+			 CREATE TABLE Staff1 (
+			     StaffID int,
+			         Name varchar(255),
+				     Address varchar(255)
+				      );
+				          </sql>
+       
+		<rollback>
+                   <dropTable tableName="Staff1"/>
+	         </rollback>
+
+        </changeSet>
+
+	<changeSet author="sang" id="101">
+    <tagDatabase tag="1.0"/>
+    </changeSet>    
+					      
+
+</databaseChangeLog>

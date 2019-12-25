@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			                      xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+					      <!-- <includeAll path="/home/sangeethak92/Gitcheckout/Liquibase/src/main/db/*.sql"/> -->
+					      <include file="./src/main/db/createtable.sql"/>
+					      <!-- <include file="./src/main/db/precondition.sql"/> -->
+					      <include file="./src/main/db/tablecreation.sql"/>
+					       
+				             <changeSet id="11" author="sang">
+						     <tagDatabase tag="version_1.0"/>
+					     </changeSet>
+			                        <changeSet id="20" author="sang">
+							<sql>
+
+                                                           CREATE TABLE Staff1 (
+							   StaffID int,
+			                                   Name varchar(255),
+							   Address varchar(255)
+	                          			    );
+							</sql>
+						</changeSet>		              
+						      <changeSet id="21" author="sang" runOnChange="true">
+							      <preConditions onError="CONTINUE"" onFail="CONTINUE"">
+								      
+									                  <dbms type="oracle" />
+											          </preConditions>
+												         <sql>
+														      insert into Employee values(4,"Raman","Seetha","Navallur","chennai");
+															           </sql>
+		                                                          	</changeSet>
+
+										<changeSet id="2" author="sang" runOnChange="true">
+											        <preConditions>
+													            <sqlCheck expectedResult="2">select count(*) from Employee</sqlCheck>
+														            </preConditions>
+															            <comment>Comments should go after preCondition. If they are before then liquibase usually gives error.</comment>
+																    <sql>
+																	    select * from Employee;
+															            </sql>
+															    </changeSet>
+
+															    <changeSet id="22" author="sang" runOnChange="true">
+																    <sql>
+																	   insert into Employee values(6,"Raman","Seetha","Navallur","chennai");
+																  </sql>
+															  </changeSet>
+
+
+
+					  </databaseChangeLog>
